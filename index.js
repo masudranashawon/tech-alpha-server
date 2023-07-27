@@ -3,6 +3,7 @@ require("dotenv").config();
 const express = require("express");
 const cors = require("cors");
 const mongoose = require("mongoose");
+const productRoutes = require("./routes/productRoute");
 
 /* VARIABLES */
 const port = process.env.PORT || 8080;
@@ -23,6 +24,9 @@ app.use(
 app.get("/", (req, res) => {
   res.status(200).json({ message: "Welcome to Tech Alpha Server" });
 });
+
+/* BYPASSED APIs */
+app.use("/api/products", productRoutes);
 
 /* DATABASE */
 mongoose
